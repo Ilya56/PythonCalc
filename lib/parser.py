@@ -1,30 +1,31 @@
-# +, -, /, *
 def parser(line: str):
+
     res = []
-    plus = '+'
-    minus = '-'
-    mul = '*'
-    div = '/'
+    line = line.replace(' ', '')
 
-    if plus in line:
-        a = line.split(plus)
+    if '+' in line:
+        a = line.split('+')
         res += ['add', a[0], a[1]]
-    elif minus in line:
-        a = line.split(minus)
+    elif '-' in line:
+        a = line.split('-')
         res += ['sub', a[0], a[1]]
-    elif mul in line:
-        a = line.split(mul)
+    elif '*' in line:
+        a = line.split('*')
         res += ['mul', a[0], a[1]]
-    elif div in line:
-        a = line.split(div)
+    elif '/' in line:
+        a = line.split('/')
         res += ['div', a[0], a[1]]
+    elif '^' in line:
+        a = line.split('^')
+        res += ['pow', a[0], a[1]]
+    elif 'ln' in line:
+        a = line.split('ln')
+        res += ['ln', a[1]]
+    elif 'lg' in line:
+        a = line.split('lg')
+        res += ['lg', a[1]]
+    elif 'log' in line:
+        a = line.split('log')
+        a2 = a[1].split(",")
+        res += ['log', a2[0], a2[1]]
     return res
-
-if __name__ == '__main__':
-    print(parser("2+2"))
-    print(parser("2-2"))
-    print(parser("2*2"))
-    print(parser("2/2"))
-    print(parser("45-2"))
-    print(parser("2/8"))
-
