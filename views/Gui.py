@@ -22,11 +22,9 @@ class Calc(QWidget):
         qle.move(60, 100)
 
 
-        text = qle.text()
-
         btn = QPushButton(" = ", self)
         btn.resize(btn.sizeHint())
-        btn.clicked.connect(self.res(text))
+        btn.clicked.connect(self.res())
 
 
         self.setGeometry(300, 300, 280, 170)
@@ -34,10 +32,10 @@ class Calc(QWidget):
         self.show()
 
 
-    def res(self, text):
+    def res(self):
 
-        res = controller.calculate(text)
-        self.lbl.setText(res)
+        result = controller.calculate(str(QLineEdit.text()))
+        self.lbl.setText(result)
         self.lbl.adjustSize()
 
 
