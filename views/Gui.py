@@ -18,13 +18,14 @@ class Calc(QWidget):
         self.lbl = QLabel(self)
         self.lbl.move(60, 40)
 
-        qle = QLineEdit(self)
-        qle.move(60, 100)
+
+        self.qle = QLineEdit(self)
+        self.qle.move(60, 100)
 
 
         btn = QPushButton(" = ", self)
         btn.resize(btn.sizeHint())
-        btn.clicked.connect(self.res())
+        btn.clicked.connect(lambda: self.res())
 
 
         self.setGeometry(300, 300, 280, 170)
@@ -33,10 +34,9 @@ class Calc(QWidget):
 
 
     def res(self):
-
-        result = controller.calculate(str(QLineEdit.text()))
-        self.lbl.setText(result)
-        self.lbl.adjustSize()
+         result = str(controller.calculate(str(self.qle.text())))
+         self.lbl.setText(result)
+         self.lbl.adjustSize()
 
 
 if __name__ == '__main__':
