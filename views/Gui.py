@@ -16,27 +16,32 @@ class Calc(QWidget):
 
 
         self.lbl = QLabel(self)
-        self.lbl.move(60, 40)
+        self.lbl.move(145, 57)
 
 
         self.qle = QLineEdit(self)
-        self.qle.move(60, 100)
+        self.qle.move(60, 10)
 
 
         btn = QPushButton(" = ", self)
         btn.resize(btn.sizeHint())
+        btn.move(60, 52)
         btn.clicked.connect(lambda: self.res())
 
 
-        self.setGeometry(300, 300, 280, 170)
+        self.setGeometry(300, 300, 480, 100)
         self.setWindowTitle('Calculator')
         self.show()
 
 
     def res(self):
-         result = str(controller.calculate(str(self.qle.text())))
-         self.lbl.setText(result)
-         self.lbl.adjustSize()
+        try:
+            result = str(controller.calculate(str(self.qle.text())))
+            self.lbl.setText(result)
+            self.lbl.adjustSize()
+        except Exception:
+            self.lbl.setText("Unfortunately, an error has appeared. Try something else.")
+            self.lbl.adjustSize()
 
 
 if __name__ == '__main__':
